@@ -73,37 +73,44 @@ class _InputPageState extends State<InputPage> {
               child: ReusableCard(
                 color: kActiveCardColor,
                 cardChild: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.baseline,
-                      textBaseline: TextBaseline.alphabetic,
-                      children: <Widget>[
-                        Text(
-                          height.toString(),
-                          style: kNumberTextStyle,
-                        ),
-                        Text(
-                          'cm',
-                          style: kTextStyle,
-                        ),
-                      ],
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: <Widget>[
+                          Text(
+                            height.toString(),
+                            style: kNumberTextStyle,
+                          ),
+                          Text(
+                            'cm',
+                            style: kTextStyle,
+                          ),
+                        ],
+                      ),
                     ),
-                    Slider(
-                      value: height.toDouble(),
-                      min: 120.0,
-                      max: 220.0,
-                      activeColor: kBottomButtonColor,
-                      inactiveColor: kTextColor,
-                      onChanged: (double newHeight) {
-                        setState(() {
-                          height = newHeight.round();
-                        });
-                      },
+                    Expanded(
+                      child: Slider(
+                        value: height.toDouble(),
+                        min: 120.0,
+                        max: 220.0,
+                        activeColor: kBottomButtonColor,
+                        inactiveColor: kTextColor,
+                        onChanged: (double newHeight) {
+                          setState(() {
+                            height = newHeight.round();
+                          });
+                        },
+                      ),
                     ),
-                    Text(
-                      'Height',
-                      style: kTextStyle,
+                    Expanded(
+                      child: Text(
+                        'Height',
+                        style: kTextStyle,
+                      ),
                     )
                   ],
                 ),
@@ -117,41 +124,50 @@ class _InputPageState extends State<InputPage> {
                         color: kActiveCardColor,
                         cardChild: Column(
                           children: <Widget>[
-                            Text(
-                              weight.toString(),
-                              style: kNumberTextStyle,
+                            Expanded(
+                              flex: 1,
+                              child: Text(
+                                weight.toString(),
+                                style: kNumberTextStyle,
+                              ),
                             ),
                             SizedBox(
                               height: kSizedBoxHeight,
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                RoundIconButton(
-                                  icon: FontAwesomeIcons.minus,
-                                  onPressed: () {
-                                    setState(() {
-                                      weight--;
-                                    });
-                                  },
-                                ),
-                                SizedBox(
-                                  width: 10.0,
-                                ),
-                                RoundIconButton(
-                                  icon: FontAwesomeIcons.plus,
-                                  onPressed: () {
-                                    setState(() {
-                                      weight++;
-                                    });
-                                  },
-                                ),
-                              ],
+                            Expanded(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  RoundIconButton(
+                                    icon: FontAwesomeIcons.minus,
+                                    onPressed: () {
+                                      if (weight > 0) {
+                                        setState(() {
+                                          weight--;
+                                        });
+                                      }
+                                    },
+                                  ),
+                                  SizedBox(
+                                    width: 10.0,
+                                  ),
+                                  RoundIconButton(
+                                    icon: FontAwesomeIcons.plus,
+                                    onPressed: () {
+                                      setState(() {
+                                        weight++;
+                                      });
+                                    },
+                                  ),
+                                ],
+                              ),
                             ),
                             SizedBox(height: kSizedBoxHeight),
-                            Text(
-                              'Weight',
-                              style: kTextStyle,
+                            Expanded(
+                              child: Text(
+                                'Weight',
+                                style: kTextStyle,
+                              ),
                             )
                           ],
                         )),
@@ -161,41 +177,48 @@ class _InputPageState extends State<InputPage> {
                       color: kActiveCardColor,
                       cardChild: Column(
                         children: <Widget>[
-                          Text(
-                            age.toString(),
-                            style: kNumberTextStyle,
+                          Expanded(
+                            flex: 1,
+                            child: Text(
+                              age.toString(),
+                              style: kNumberTextStyle,
+                            ),
                           ),
                           SizedBox(
                             height: kSizedBoxHeight,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              RoundIconButton(
-                                icon: FontAwesomeIcons.minus,
-                                onPressed: () {
-                                  setState(() {
-                                    age--;
-                                  });
-                                },
-                              ),
-                              SizedBox(
-                                width: kSizedBoxHeight,
-                              ),
-                              RoundIconButton(
-                                icon: FontAwesomeIcons.plus,
-                                onPressed: () {
-                                  setState(() {
-                                    age++;
-                                  });
-                                },
-                              ),
-                            ],
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                RoundIconButton(
+                                  icon: FontAwesomeIcons.minus,
+                                  onPressed: () {
+                                    if (age > 0) {
+                                      setState(() {
+                                        age--;
+                                      });
+                                    }
+                                  },
+                                ),
+                                SizedBox(
+                                  width: kSizedBoxHeight,
+                                ),
+                                RoundIconButton(
+                                  icon: FontAwesomeIcons.plus,
+                                  onPressed: () {
+                                    setState(() {
+                                      age++;
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
                           SizedBox(
                             height: kSizedBoxHeight,
                           ),
-                          Text('Age', style: kTextStyle)
+                          Expanded(child: Text('Age', style: kTextStyle))
                         ],
                       ),
                     ),

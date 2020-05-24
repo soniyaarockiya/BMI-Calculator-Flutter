@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'Screens/InputPage.dart';
-import 'Screens/ResultPage.dart';
+//import 'Screens/ResultPage.dart';
 
 void main() => runApp(BMICalculator());
 
@@ -18,7 +18,7 @@ class BMICalculator extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => InputPage(),
-        'ResultPage': (context) => ResultPage(),
+//        'ResultPage': (context) => ResultPage(),
       },
     );
   }
